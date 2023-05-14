@@ -14,9 +14,9 @@ import Avatar from '@mui/material/Avatar';
 import { fetchContacts } from 'redux/contacts/contacts-operations';
 import { deleteContact } from 'redux/contacts/contacts-operations';
 import {
-  getContacts,
-  getIsLoading,
-  getError,
+  selectContact,
+  selectIsLoading,
+  selectError,
 } from 'redux/contacts/contacts-selectors';
 import { getFilter } from 'redux/filter/filter-selectors';
 // conponents
@@ -42,9 +42,9 @@ import {
 } from './ContactList.styled';
 
 export const ContactList = () => {
-  const contacts = useSelector(getContacts);
-  const isLoading = useSelector(getIsLoading);
-  const error = useSelector(getError);
+  const contacts = useSelector(selectContact);
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
   const filter = useSelector(getFilter);
 
   const [selectedContact, setSelectedContact] = useState(null);
