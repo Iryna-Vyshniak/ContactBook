@@ -1,26 +1,17 @@
 import React from 'react';
-import { LinkNav, HeaderBlock } from './Header.styled';
-import NavbarAuth from '../Navbar/NavbarAuth';
-import { Link } from 'react-router-dom';
+import { HeaderBlock } from './Header.styled';
+import NavbarAuth from '../NavbarAuth/NavbarAuth';
+import { useAuth } from 'hooks/useAuth';
+import { UserMenu } from 'modules/UserMenu/UserMenu';
+import { Navigation } from 'modules/Navigation/Navigation';
 
 const Header = () => {
+  const { isLoggedIn } = useAuth();
   return (
     <>
       <HeaderBlock>
-        <nav>
-          <Link to="/">Logo</Link>
-          <ul>
-            <li>
-              <LinkNav to="/">Home</LinkNav>
-            </li>
-            <li>
-              <LinkNav to="/contacts">Contacts</LinkNav>
-            </li>
-            <li>
-              <NavbarAuth />
-            </li>
-          </ul>
-        </nav>
+        <Navigation />
+        {isLoggedIn ? <UserMenu /> : <NavbarAuth />}
       </HeaderBlock>
     </>
   );
