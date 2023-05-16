@@ -1,21 +1,26 @@
 // import { Formik, Form, Field } from 'formik';
+// import { useDispatch } from 'react-redux';
 // import { NavLink } from 'react-router-dom';
+// import { registerUser } from 'redux/auth/operations';
 
-// const Register = () => {
+// export default function Register() {
+//   const dispatch = useDispatch();
 //   return (
 //     <div>
 //       <Formik
 //         initialValues={{ name: '', email: '', password: '' }}
 //         onSubmit={(values, { resetForm }) => {
+//           console.log(values);
 //           const item = {
 //             ...values,
-//            };
-
+//           };
+//           console.log(item);
+//           dispatch(registerUser(item));
 //           resetForm();
 //         }}
 //       >
 //         <Form>
-//           <h2>Register</h2>
+//           <h2>SignUp</h2>
 //           <label htmlFor="name">Name</label>
 //           <Field
 //             type="text"
@@ -58,9 +63,7 @@
 //       </p>
 //     </div>
 //   );
-// };
-
-// export default Register;
+// }
 
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
@@ -76,36 +79,44 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Link } from 'react-router-dom';
-
-function Copyright(props) {
-  return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+import { Link, useLocation } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { registerUser } from 'redux/auth/auth-operations';
 
 const theme = createTheme();
 
 export default function Register() {
+  const dispatch = useDispatch();
+  const location = useLocation();
+  const onSignUp = location.pathname === '/register';
+  const [empty, setEmpty] = React.useState({ email: false, password: false });
+
   const handleSubmit = event => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
+
+    const user = {
+      name: data.get('name'),
       email: data.get('email'),
       password: data.get('password'),
-    });
+    };
+
+    console.log('form reg user: ', user);
+
+    if (user.name === '') {
+      setEmpty(prev => ({ ...prev, name: true }));
+      return;
+    }
+    if (user.email === '') {
+      setEmpty(prev => ({ ...prev, email: true }));
+      return;
+    }
+    if (user.password === '') {
+      setEmpty(prev => ({ ...prev, password: true }));
+      return;
+    }
+
+    dispatch(registerUser(user));
   };
 
   return (
@@ -120,11 +131,11 @@ export default function Register() {
             alignItems: 'center',
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+          <Avatar sx={{ m: 1, bgcolor: 'primary.main' }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign up
+            SignUp
           </Typography>
           <Box
             component="form"
@@ -133,25 +144,16 @@ export default function Register() {
             sx={{ mt: 3 }}
           >
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12}>
                 <TextField
                   autoComplete="given-name"
-                  name="firstName"
+                  name="name"
                   required
                   fullWidth
-                  id="firstName"
-                  label="First Name"
+                  id="name"
+                  label="Name"
                   autoFocus
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  required
-                  fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="lastName"
-                  autoComplete="family-name"
+                  error={empty.name}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -162,6 +164,7 @@ export default function Register() {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
+                  error={empty.email}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -173,6 +176,7 @@ export default function Register() {
                   type="password"
                   id="password"
                   autoComplete="new-password"
+                  error={empty.password}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -194,14 +198,15 @@ export default function Register() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link to={`/login`} variant="body2">
-                  Already have an account? Sign in
-                </Link>
+                {onSignUp && (
+                  <Link to={`/login`} variant="body2">
+                    Already have an account? Sign in
+                  </Link>
+                )}
               </Grid>
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 5 }} />
       </Container>
     </ThemeProvider>
   );
