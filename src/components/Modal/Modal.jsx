@@ -5,7 +5,7 @@ import Avatar from 'assets/avatar.png';
 import {
   Button,
   CloseBtn,
-  ModalPicture,
+  // ModalPicture,
   ModalPictureWrapper,
   PictureDescr,
 } from './Modal.styled';
@@ -16,6 +16,8 @@ import { Tooltip } from '@chakra-ui/react';
 
 import { TfiPencil } from 'react-icons/tfi';
 import { ChangeContactModal } from 'components/ChangeContactModal/ChangeContactModal';
+import { getRandomHexColor } from 'utils/getRandomHexColor';
+import { abbrevName } from 'utils/abbrevName';
 
 Modal.setAppElement('#root');
 
@@ -31,6 +33,16 @@ export const ContactModal = ({ isOpen, data, onClose }) => {
     onClose();
   };
 
+  function stringAvatar(name) {
+    //console.log(name);
+    return {
+      sx: {
+        bgcolor: getRandomHexColor(),
+      },
+      children: abbrevName(name),
+    };
+  }
+
   return (
     <Modal
       isOpen={isOpen}
@@ -42,11 +54,7 @@ export const ContactModal = ({ isOpen, data, onClose }) => {
         <MdOutlineClose />
       </CloseBtn>
       <ModalPictureWrapper>
-        <ModalPicture
-          src={data?.avatar !== '' ? `${data?.avatar}` : Avatar}
-          alt="photo"
-          width="260"
-        />
+        <Avatar {...stringAvatar(Object.values(data?.name).join(''))} />
       </ModalPictureWrapper>
       <PictureDescr>
         <p>{data?.name}</p>
