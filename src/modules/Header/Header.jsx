@@ -8,12 +8,10 @@ import { Navigation } from 'modules/Navigation/Navigation';
 const Header = () => {
   const { isLoggedIn } = useAuth();
   return (
-    <>
-      <HeaderBlock>
-        <Navigation />
-        {isLoggedIn ? <UserMenu /> : <NavbarAuth />}
-      </HeaderBlock>
-    </>
+    <HeaderBlock>
+      <Navigation />
+      {isLoggedIn ? <UserMenu /> : <NavbarAuth />}
+    </HeaderBlock>
   );
 };
 
