@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 
 import {
   fetchContacts,
@@ -13,6 +13,21 @@ const initialState = {
   error: null,
 };
 
+const customArrThunks = [
+  fetchContacts,
+  addContact,
+  deleteContact,
+  changeContact,
+];
+
+const status = {
+  pending: 'pending',
+  fulfilled: 'fulfilled',
+  rejected: 'rejected',
+};
+
+const fn = status => customArrThunks.map(el => el[status]);
+
 const handlePending = state => {
   state.isLoading = true;
   state.error = null;
@@ -23,47 +38,43 @@ const handleRejected = (state, { payload }) => {
   state.error = payload;
 };
 
+const handleFulfilled = state => {
+  state.isLoading = false;
+  state.error = null;
+};
+
+const handleFulfilledGet = (state, { payload }) => {
+  state.items = payload;
+};
+
+const handleFulfilledAdd = (state, { payload }) => {
+  state.items.push(payload);
+};
+
+const handleFulfilledDelete = (state, { payload }) => {
+  state.items = state.items.filter(({ id }) => id !== payload);
+};
+
+const handleFulfilledChange = (state, { payload }) => {
+  const index = state.items.findIndex(({ id }) => id === payload.id);
+  if (index !== -1) {
+    state.items[index] = payload;
+  }
+};
+
 const contactsSlice = createSlice({
   name: 'contacts',
   initialState,
-  reducers: {},
   extraReducers: builder => {
+    const { pending, fulfilled, rejected } = status;
     builder
-      .addCase(fetchContacts.pending, handlePending)
-      .addCase(fetchContacts.fulfilled, (state, { payload }) => {
-        state.isLoading = false;
-        state.error = null;
-        state.items = payload;
-      })
-      .addCase(fetchContacts.rejected, handleRejected)
-      .addCase(addContact.pending, handlePending)
-      .addCase(addContact.fulfilled, (state, { payload }) => {
-        state.isLoading = false;
-        state.error = null;
-        state.items.push(payload);
-      })
-      .addCase(addContact.rejected, handleRejected)
-      .addCase(deleteContact.pending, handlePending)
-      .addCase(deleteContact.fulfilled, (state, { payload }) => {
-        state.isLoading = false;
-        state.error = null;
-        state.items = state.items.filter(({ id }) => id !== payload);
-      })
-      .addCase(deleteContact.rejected, handleRejected)
-      //
-      .addCase(changeContact.pending, handlePending)
-      .addCase(changeContact.fulfilled, (state, { payload }) => {
-        state.isLoading = false;
-        state.error = null;
-        //console.log(state.items);
-        const index = state.items.findIndex(({ id }) => id === payload.id);
-        //console.log(state.items[index]);
-        //console.log(payload);
-        if (index !== -1) {
-          state.items[index] = payload;
-        }
-      })
-      .addCase(changeContact.rejected, handleRejected);
+      .addCase(fetchContacts.fulfilled, handleFulfilledGet)
+      .addCase(addContact.fulfilled, handleFulfilledAdd)
+      .addCase(deleteContact.fulfilled, handleFulfilledDelete)
+      .addCase(changeContact.fulfilled, handleFulfilledChange)
+      .addMatcher(isAnyOf(...fn(pending)), handlePending)
+      .addMatcher(isAnyOf(...fn(fulfilled)), handleFulfilled)
+      .addMatcher(isAnyOf(...fn(rejected)), handleRejected);
   },
 });
 
