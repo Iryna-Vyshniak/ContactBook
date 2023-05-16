@@ -1,58 +1,3 @@
-// import { Formik, Form, Field } from 'formik';
-// import { NavLink } from 'react-router-dom';
-
-// const Login = () => {
-//   return (
-//     <div>
-//       <h2>Log In</h2>
-//       <Formik
-//         initialValues={{ email: '', password: '' }}
-//         onSubmit={(values, { resetForm }) => {
-//           const item = {
-//             ...values,
-//           };
-
-//           resetForm();
-//         }}
-//       >
-//         <Form>
-//           <h2>Welcome back</h2>
-
-//           <label htmlFor="email">Email</label>
-//           <Field
-//             type="email"
-//             name="email"
-//             id="email"
-//             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-//             title="Invalid email address"
-//             placeholder="Please enter email"
-//             required
-//           />
-
-//           <label htmlFor="password">Password</label>
-//           <Field
-//             type="password"
-//             name="password"
-//             id="password"
-//             pattern=".{4,}"
-//             title="Eight or more characters"
-//             placeholder="Please enter password"
-//             required
-//             autoComplete="true"
-//           />
-
-//           <button type="submit">LOGIN</button>
-//         </Form>
-//       </Formik>
-//       <p>
-//         Don`t have an account? <NavLink to={`/register`}>Sign up</NavLink>
-//       </p>
-//     </div>
-//   );
-// };
-
-// export default Login;
-
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -60,43 +5,45 @@ import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-//import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Link } from 'react-router-dom';
-
-function Copyright(props) {
-  return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+import { Link, useLocation } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { logInUser } from 'redux/auth/auth-operations';
 
 const theme = createTheme();
 
 export default function Login() {
+  const dispatch = useDispatch();
+  const location = useLocation();
+  const onSignIn = location.pathname === '/login';
+  const [empty, setEmpty] = React.useState({ email: false, password: false });
+
   const handleSubmit = event => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
+
+    const user = {
       email: data.get('email'),
       password: data.get('password'),
-    });
+    };
+
+    console.log('form login user: ', user);
+
+    if (user.email === '') {
+      setEmpty(prev => ({ ...prev, email: true }));
+      return;
+    }
+    if (user.password === '') {
+      setEmpty(prev => ({ ...prev, password: true }));
+      return;
+    }
+
+    dispatch(logInUser(user));
   };
 
   return (
@@ -132,6 +79,7 @@ export default function Login() {
               name="email"
               autoComplete="email"
               autoFocus
+              error={empty.email}
             />
             <TextField
               margin="normal"
@@ -142,6 +90,7 @@ export default function Login() {
               type="password"
               id="password"
               autoComplete="current-password"
+              error={empty.password}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
@@ -162,14 +111,15 @@ export default function Login() {
                 </Link>
               </Grid>
               <Grid item>
-                <Link to={`/register`} variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
+                {onSignIn && (
+                  <Link to={`/register`} variant="body2">
+                    {"Don't have an account? Sign Up"}
+                  </Link>
+                )}
               </Grid>
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
     </ThemeProvider>
   );
