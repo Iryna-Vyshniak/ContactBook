@@ -21,8 +21,8 @@ export const GlobalStyle = createGlobalStyle`
 
 
     background-color: #dee2ff;
-    background:  #dee2ff url(https://ik.imagekit.io/irinavn2011/bg-contacts_bmkI5dLQ9?updatedAt=1683549546920) 0 0 / cover no-repeat;
-    background-attachment: fixed;
+    // background:  #dee2ff url(https://ik.imagekit.io/irinavn2011/bg-contacts_bmkI5dLQ9?updatedAt=1683549546920) 0 0 / cover no-repeat;
+    // background-attachment: fixed;
 
     /* <a href="https://www.freepik.com/free-photo/flat-lay-photo-office-desk-with-laptop-copy-space-background_14777890.htm#from_view=detail_alsolike">Image by jcomp</a> on Freepik */
 
