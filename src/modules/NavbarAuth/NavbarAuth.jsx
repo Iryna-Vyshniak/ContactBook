@@ -5,7 +5,7 @@ const NavbarAuth = () => {
   return (
     <div>
       <NavLink to="/register">Register</NavLink> |
-      <NavLink to="/Login">Login</NavLink>
+      <NavLink to="/login">Login</NavLink>
     </div>
   );
 };
