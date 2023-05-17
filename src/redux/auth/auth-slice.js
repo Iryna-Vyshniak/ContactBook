@@ -7,23 +7,14 @@ import {
   logOutUser,
   getCurrentUser,
 } from './auth-operations';
+
 import persistReducer from 'redux-persist/es/persistReducer';
 
 const initialState = {
   user: { name: null, email: null },
   token: null,
   isLoggedIn: false,
-  isFetchingCurrentUser: false,
-  isLoading: false,
-  error: null,
-};
-
-const pending = state => {
-  state.isLoading = true;
-};
-const rejected = (state, { payload }) => {
-  state.isLoading = false;
-  state.error = payload;
+  isRefreshing: false,
 };
 
 const authSlice = createSlice({
@@ -31,38 +22,53 @@ const authSlice = createSlice({
   initialState,
   extraReducers: builder =>
     builder
-      .addCase(registerUser.pending, pending)
-      .addCase(logInUser.pending, pending)
-      .addCase(logOutUser.pending, pending)
-      .addCase(getCurrentUser.pending, state => {
-        state.isFetchingCurrentUser = true;
-      })
-      .addCase(registerUser.rejected, rejected)
-      .addCase(logInUser.rejected, rejected)
-      .addCase(logOutUser.rejected, rejected)
-      .addCase(getCurrentUser.rejected, (state, { payload }) => {
-        state.isFetchingCurrentUser = false;
-        state.error = payload;
+      .addCase(registerUser.pending, (state, { payload }) => {
+        return state;
       })
       .addCase(registerUser.fulfilled, (state, { payload }) => {
         state.user = payload.user;
         state.token = payload.token;
         state.isLoggedIn = true;
       })
+      .addCase(registerUser.rejected, (state, { payload }) => {
+        return state;
+      })
+      //
+      .addCase(logInUser.pending, (state, { payload }) => {
+        return state;
+      })
       .addCase(logInUser.fulfilled, (state, { payload }) => {
         state.user = payload.user;
         state.token = payload.token;
         state.isLoggedIn = true;
+      })
+      .addCase(logInUser.rejected, (state, { payload }) => {
+        return state;
+      })
+      //
+      .addCase(logOutUser.pending, (state, { payload }) => {
+        return state;
       })
       .addCase(logOutUser.fulfilled, state => {
         state.user = { name: null, email: null };
         state.token = null;
         state.isLoggedIn = false;
       })
+      .addCase(logOutUser.rejected, (state, { payload }) => {
+        return state;
+      })
+      //
+      .addCase(getCurrentUser.pending, state => {
+        state.isRefreshing = true;
+      })
       .addCase(getCurrentUser.fulfilled, (state, { payload }) => {
         state.user = payload;
         state.isLoggedIn = true;
-        state.isFetchingCurrentUser = false;
+        state.isRefreshing = false;
+      })
+      .addCase(getCurrentUser.rejected, (state, { payload }) => {
+        state.isRefreshing = false;
+        //state.error = payload;
       }),
 });
 
