@@ -13,7 +13,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import {
   persistStore,
-  persistReducer,
+  //persistReducer,
   FLUSH,
   REHYDRATE,
   PAUSE,
@@ -21,28 +21,25 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
 
-import { rootReducer } from './root-reducer';
-
-// об'єкт налаштувань, в якому записані, які дані зберігати в Local Storage
-const persistConfig = {
-  key: 'root',
-  storage,
-  whitelist: ['contacts'],
-  // blacklist: ["filter"]
-};
-
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+//import { rootReducer } from './root-reducer';
+import contactsReducer from './contacts/contacts-slice';
+import filterReducer from './filter/filter-slice';
+import persistedAuthReducer from './auth/auth-slice';
 
 export const store = configureStore({
-  reducer: persistedReducer,
+  reducer: {
+    auth: persistedAuthReducer,
+    filter: filterReducer,
+    contacts: contactsReducer,
+  },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
+  devTools: process.env.NODE_ENV === 'development',
 });
 
 // дані з локал сторіджа потрапляли відразу в redux під час завантаження
