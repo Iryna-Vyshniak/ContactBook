@@ -41,7 +41,6 @@ export const addContact = createAsyncThunk(
       toast.success('Add contact', {
         position: 'bottom-right',
       });
-      console.log(data);
       return result;
     } catch ({ response }) {
       return rejectWithValue(`Ooops! Wrong... Try again or update browser`);
