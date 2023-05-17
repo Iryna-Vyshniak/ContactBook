@@ -11,14 +11,13 @@ export const schema = yup.object().shape({
       'Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d`Artagnan'
     )
     .required(),
-  phone: yup
+  number: yup
     .string()
     .trim()
-    .matches(
-      /^((\+)?(3)?(8)?[- ]?)?(\(?\d{3}\)?[- ]?)?\d{3}[- ]?\d{2}[- ]?\d{2}$/,
-      // /^\+?3?8?(0[ -]\d{2}[ -]\d{3}[ -]\d{2}[ -]\d{2})$/,
-      'Phone number must be a valid phone number for region UA, digits and can contain spaces, dashes, parentheses and can start with +'
-    )
+    // .matches(
+    //   /^((\+)?(3)?(8)?[- ]?)?(\(?\d{3}\)?[- ]?)?\d{3}[- ]?\d{2}[- ]?\d{2}$/,
+    //   'Phone number must be a valid phone number for region UA, digits and can contain spaces, dashes, parentheses and can start with +'
+    // )
     .phone(
       'UA',
       true,
