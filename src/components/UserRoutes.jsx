@@ -14,29 +14,34 @@ const UserRoutes = () => {
     <Suspense fallback={<Loader />}>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
-          <Route
-            index
-            element={
-              <RestrictedRoute redirectTo="/" component={<HomePage />} />
-            }
-          />
+          <Route index element={<HomePage />} />
           <Route
             path="register"
             element={
               <RestrictedRoute
-                redirectTo="/"
                 component={<RegistrationPage />}
+                redirectTo="/contacts"
               />
             }
           />
           <Route
             path="login"
             element={
-              <RestrictedRoute redirectTo="/" component={<LoginPage />} />
+              <RestrictedRoute
+                component={<LoginPage />}
+                redirectTo="/contacts"
+              />
             }
           />
-          <Route path="contacts" element={<ContactsPage />} />
-          <Route path="*" element={<HomePage />} />
+          <Route
+            path="contacts"
+            element={
+              <RestrictedRoute
+                component={<ContactsPage />}
+                redirectTo="/login"
+              />
+            }
+          />
         </Route>
       </Routes>
     </Suspense>
