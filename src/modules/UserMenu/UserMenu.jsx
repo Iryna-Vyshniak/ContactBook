@@ -5,13 +5,15 @@ import { useAuth } from 'hooks/useAuth';
 
 export const UserMenu = () => {
   const dispatch = useDispatch();
-  const { userName } = useAuth();
+  const { user } = useAuth();
+
+  const handleLogOut = () => dispatch(logOutUser());
 
   return (
     <Wrapper>
-      <p>Welcome, {userName}</p>
-      <button type="button" onClick={() => dispatch(logOutUser())}>
-        Log Out
+      <p>Welcome, {user.name}</p>
+      <button type="button" onClick={handleLogOut}>
+        LogOut
       </button>
     </Wrapper>
   );
