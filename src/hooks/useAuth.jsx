@@ -1,36 +1,21 @@
 import { useSelector } from 'react-redux';
 import {
   selectToken,
-  selectName,
-  selectEmail,
+  selectUser,
+  selectIsRefreshing,
   selectIsLogin,
-  selectFilter,
-  selectContacts,
-  selectFilteredContacts,
-  selectIsLoading,
-  selectError,
 } from 'redux/selectors';
 
 export const useAuth = () => {
   const token = useSelector(selectToken);
   const isLoggedIn = useSelector(selectIsLogin);
-  const filter = useSelector(selectFilter);
-  const contacts = useSelector(selectContacts);
-  const filteredContacts = useSelector(selectFilteredContacts);
-  const userName = useSelector(selectName);
-  const userEmail = useSelector(selectEmail);
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
+  const user = useSelector(selectUser);
+  const isRefreshing = useSelector(selectIsRefreshing);
 
   return {
     token,
     isLoggedIn,
-    userName,
-    userEmail,
-    filter,
-    contacts,
-    filteredContacts,
-    isLoading,
-    error,
+    user,
+    isRefreshing,
   };
 };
