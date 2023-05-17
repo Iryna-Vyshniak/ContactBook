@@ -1,70 +1,3 @@
-// import { Formik, Form, Field } from 'formik';
-// import { useDispatch } from 'react-redux';
-// import { NavLink } from 'react-router-dom';
-// import { registerUser } from 'redux/auth/operations';
-
-// export default function Register() {
-//   const dispatch = useDispatch();
-//   return (
-//     <div>
-//       <Formik
-//         initialValues={{ name: '', email: '', password: '' }}
-//         onSubmit={(values, { resetForm }) => {
-//           console.log(values);
-//           const item = {
-//             ...values,
-//           };
-//           console.log(item);
-//           dispatch(registerUser(item));
-//           resetForm();
-//         }}
-//       >
-//         <Form>
-//           <h2>SignUp</h2>
-//           <label htmlFor="name">Name</label>
-//           <Field
-//             type="text"
-//             name="name"
-//             id="name"
-//             placeholder="Please enter name"
-//             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-//             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-//             required
-//           />
-
-//           <label htmlFor="email">Email</label>
-//           <Field
-//             type="email"
-//             name="email"
-//             id="email"
-//             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-//             title="Invalid email address"
-//             placeholder="Please enter email"
-//             required
-//           />
-
-//           <label htmlFor="password">Password</label>
-//           <Field
-//             type="password"
-//             name="password"
-//             id="password"
-//             pattern=".{4,}"
-//             title="Eight or more characters"
-//             placeholder="Please enter password"
-//             required
-//             autoComplete="true"
-//           />
-
-//           <button type="submit">Sign Up</button>
-//         </Form>
-//       </Formik>
-//       <p>
-//         Already registered? <NavLink to={`/login`}>Sign in</NavLink>
-//       </p>
-//     </div>
-//   );
-// }
-
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -101,7 +34,7 @@ export default function Register() {
       password: data.get('password'),
     };
 
-    console.log('form reg user: ', user);
+    //console.log('form reg user: ', user);
 
     if (user.name === '') {
       setEmpty(prev => ({ ...prev, name: true }));
@@ -146,12 +79,12 @@ export default function Register() {
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <TextField
-                  autoComplete="given-name"
-                  name="name"
                   required
                   fullWidth
                   id="name"
                   label="Name"
+                  //autoComplete="given-name"
+                  name="name"
                   autoFocus
                   error={empty.name}
                 />
@@ -163,7 +96,7 @@ export default function Register() {
                   id="email"
                   label="Email Address"
                   name="email"
-                  autoComplete="email"
+                  // autoComplete="email"
                   error={empty.email}
                 />
               </Grid>
@@ -175,7 +108,7 @@ export default function Register() {
                   label="Password"
                   type="password"
                   id="password"
-                  autoComplete="new-password"
+                  // autoComplete="new-password"
                   error={empty.password}
                 />
               </Grid>
