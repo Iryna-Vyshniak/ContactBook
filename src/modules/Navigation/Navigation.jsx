@@ -9,6 +9,12 @@ export const Navigation = () => {
       <Link to="/">Logo</Link>
       <NavLink to="/">Home</NavLink>
       {isLoggedIn && <NavLink to="/contacts">Contacts</NavLink>}
+      {!isLoggedIn && (
+        <>
+          <NavLink to="/register">SignUp</NavLink>
+          <NavLink to="/login">SignIn</NavLink>
+        </>
+      )}
     </nav>
   );
 };
