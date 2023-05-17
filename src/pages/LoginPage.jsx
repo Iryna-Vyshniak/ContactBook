@@ -32,7 +32,7 @@ export default function Login() {
       password: data.get('password'),
     };
 
-    console.log('form login user: ', user);
+    //console.log('form login user: ', user);
 
     if (user.email === '') {
       setEmpty(prev => ({ ...prev, email: true }));
@@ -77,7 +77,7 @@ export default function Login() {
               id="email"
               label="Email Address"
               name="email"
-              autoComplete="email"
+              // autoComplete="email"
               autoFocus
               error={empty.email}
             />
@@ -89,7 +89,7 @@ export default function Login() {
               label="Password"
               type="password"
               id="password"
-              autoComplete="current-password"
+              // autoComplete="current-password"
               error={empty.password}
             />
             <FormControlLabel
