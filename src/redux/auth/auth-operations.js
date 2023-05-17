@@ -9,7 +9,7 @@ import {
 } from 'shared/api/authServices';
 
 export const registerUser = createAsyncThunk(
-  'user/register',
+  'auth/register',
   async (data, { rejectWithValue }) => {
     try {
       const result = await userSignUp(data);
@@ -26,7 +26,7 @@ export const registerUser = createAsyncThunk(
 );
 
 export const logInUser = createAsyncThunk(
-  'user/login',
+  'auth/login',
   async (data, { rejectWithValue }) => {
     try {
       const result = await userLogin(data);
@@ -43,7 +43,7 @@ export const logInUser = createAsyncThunk(
 );
 
 export const logOutUser = createAsyncThunk(
-  'user/logout',
+  'auth/logout',
   async (_, { rejectWithValue }) => {
     try {
       const { data } = await userLogout();
@@ -60,7 +60,7 @@ export const logOutUser = createAsyncThunk(
 );
 
 export const getCurrentUser = createAsyncThunk(
-  'user/current',
+  'auth/current',
   async (_, { rejectWithValue, getState }) => {
     try {
       const {
@@ -68,6 +68,7 @@ export const getCurrentUser = createAsyncThunk(
       } = getState();
 
       const { data } = await userCurrent(token);
+
       console.log('currentUser:', data);
       return data;
     } catch ({ response }) {
@@ -79,6 +80,7 @@ export const getCurrentUser = createAsyncThunk(
       const {
         auth: { token },
       } = getState();
+
       if (!token) {
         return false;
       }
