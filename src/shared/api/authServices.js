@@ -18,12 +18,14 @@ export const userSignUp = async credentials => {
     credentials
   );
   setAuthHeader(result.token);
+  console.log(result);
   return result;
 };
 
 export const userLogin = async credentials => {
   const { data: result } = await authInstance.post('/users/login', credentials);
   setAuthHeader(result.token);
+  console.log(result);
   return result;
 };
 
@@ -34,7 +36,7 @@ export const userLogout = async () => {
 };
 
 export const userCurrent = async token => {
-  const response = await authInstance.post('/users/logout');
   setAuthHeader(token);
+  const response = await authInstance.get('/users/current');
   return response;
 };
