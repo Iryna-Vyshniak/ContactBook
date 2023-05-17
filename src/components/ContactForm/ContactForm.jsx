@@ -18,7 +18,7 @@ import {
   LabelSpan,
 } from './ContactForm.styled';
 
-const initialValues = { avatar: '', name: '', phone: '' };
+const initialValues = { name: '', number: '' };
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
@@ -30,20 +30,13 @@ export const ContactForm = () => {
     <Formik
       initialValues={initialValues}
       onSubmit={(values, { resetForm }) => {
+        console.log(values);
         onAddContact({ ...values });
         resetForm();
       }}
       validationSchema={schema}
     >
       <Form autoComplete="off">
-        <FormField>
-          <LabelWrapper>
-            <BsPersonFill />
-            <LabelSpan>Avatar</LabelSpan>
-          </LabelWrapper>
-          <FieldFormik name="avatar" placeholder="Add link to avatar" />
-          <ErrorMessage name="avatar" component="span" />
-        </FormField>
         <FormField>
           <LabelWrapper>
             <BsPersonFill />
@@ -55,14 +48,14 @@ export const ContactForm = () => {
         <FormField>
           <LabelWrapper>
             <BsFillTelephoneFill />
-            <LabelSpan>Number</LabelSpan>
+            <LabelSpan>Phone Number</LabelSpan>
           </LabelWrapper>
           <FieldFormik
             type="tel"
-            name="phone"
+            name="number"
             placeholder="+38-050-123-45-67"
           />
-          <ErrorMessage name="phone" component="span" />
+          <ErrorMessage name="number" component="span" />
         </FormField>
         <StyledButton type="submit">
           <IoMdPersonAdd size="16" />
