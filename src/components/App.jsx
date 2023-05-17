@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { getCurrentUser } from 'redux/auth/auth-operations';
 import { useAuth } from 'hooks/useAuth';
+import { Loader } from './Loader/Loader';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -19,10 +20,9 @@ export const App = () => {
 
   return (
     <>
+      {isRefreshing && <Loader/>}
       {!isRefreshing && <UserRoutes />}
-
       <ToastContainer />
-
       <GlobalStyle />
     </>
   );
