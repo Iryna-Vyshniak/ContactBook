@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import { SharedLayout } from 'modules/SharedLayout';
 import { RestrictedRoute } from './RestrictedRoute';
 import { Loader } from './Loader/Loader';
+import { PrivateRoute } from './PrivateRoute';
 
 const HomePage = lazy(() => import('pages/HomePage'));
 const ContactsPage = lazy(() => import('pages/ContactsPage'));
@@ -19,8 +20,8 @@ const UserRoutes = () => {
             path="register"
             element={
               <RestrictedRoute
-                component={<RegistrationPage />}
                 redirectTo="/contacts"
+                component={<RegistrationPage />}
               />
             }
           />
@@ -28,18 +29,15 @@ const UserRoutes = () => {
             path="login"
             element={
               <RestrictedRoute
-                component={<LoginPage />}
                 redirectTo="/contacts"
+                component={<LoginPage />}
               />
             }
           />
           <Route
             path="contacts"
             element={
-              <RestrictedRoute
-                component={<ContactsPage />}
-                redirectTo="/login"
-              />
+              <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
             }
           />
         </Route>
