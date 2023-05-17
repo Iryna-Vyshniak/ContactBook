@@ -7,6 +7,8 @@ import { Navigation } from 'modules/Navigation/Navigation';
 
 const Header = () => {
   const { isLoggedIn } = useAuth();
+  console.log(isLoggedIn);
+
   return (
     <HeaderBlock>
       <Navigation />
