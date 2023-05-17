@@ -1,11 +1,11 @@
 import Modal from 'react-modal';
 
 import { MdOutlineClose } from 'react-icons/md';
-import Avatar from 'assets/avatar.png';
+import Av from 'assets/avatar.png';
 import {
   Button,
   CloseBtn,
-  // ModalPicture,
+  ModalPicture,
   ModalPictureWrapper,
   PictureDescr,
 } from './Modal.styled';
@@ -13,11 +13,13 @@ import { customStyles } from 'styles/modalStyles';
 import { useState } from 'react';
 
 import { Tooltip } from '@chakra-ui/react';
+// mui
+//import Avatar from '@mui/material/Avatar';
 
 import { TfiPencil } from 'react-icons/tfi';
 import { ChangeContactModal } from 'components/ChangeContactModal/ChangeContactModal';
-import { getRandomHexColor } from 'utils/getRandomHexColor';
-import { abbrevName } from 'utils/abbrevName';
+// import { getRandomHexColor } from 'utils/getRandomHexColor';
+// import { abbrevName } from 'utils/abbrevName';
 
 Modal.setAppElement('#root');
 
@@ -33,15 +35,15 @@ export const ContactModal = ({ isOpen, data, onClose }) => {
     onClose();
   };
 
-  function stringAvatar(name) {
-    //console.log(name);
-    return {
-      sx: {
-        bgcolor: getRandomHexColor(),
-      },
-      children: abbrevName(name),
-    };
-  }
+  // function stringAvatar(name) {
+  //   //console.log(name);
+  //   return {
+  //     sx: {
+  //       bgcolor: getRandomHexColor(),
+  //     },
+  //     children: abbrevName(name),
+  //   };
+  // }
 
   return (
     <Modal
@@ -54,13 +56,16 @@ export const ContactModal = ({ isOpen, data, onClose }) => {
         <MdOutlineClose />
       </CloseBtn>
       <ModalPictureWrapper>
-        <Avatar {...stringAvatar(Object.values(data?.name).join(''))} />
+        {/* {data?.name && (
+          <Avatar {...stringAvatar(Object.values(data?.name).join(''))} />
+        )} */}
+        <ModalPicture src={Av} alt="photo" width="260" />
       </ModalPictureWrapper>
       <PictureDescr>
         <p>{data?.name}</p>
         <Tooltip label="Call" hasArrow bg="gray.300" color="#000" fontSize="xs">
           <p>
-            <a href={'tel:' + data?.phone}>{data?.phone}</a>
+            <a href={'tel:' + data?.phone}>{data?.number}</a>
           </p>
         </Tooltip>
       </PictureDescr>
