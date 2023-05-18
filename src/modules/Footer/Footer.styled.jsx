@@ -1,11 +1,6 @@
 import { styled } from 'styled-components';
 
 export const FooterBlock = styled.footer`
-  position: sticky;
-  bottom: 0;
-  left: 0;
-  z-index: 1100;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,8 +13,8 @@ export const FooterBlock = styled.footer`
   padding-bottom: ${props => props.theme.space[3]}px;
 
   color: ${props => props.theme.colors.black};
-  text-shadow: 0 1px 1px #fff;
-  background-color: ${props => props.theme.colors.secondary};
+  text-shadow: 0 -0.4px 0.4px #ffffff, 0.4px 0.4px 0.4px #00000031;
+  background-color: #ffffff;
 
   box-shadow: -1px -1px 7px -1px rgba(0, 0, 0, 0.4);
 
@@ -30,8 +25,15 @@ export const FooterBlock = styled.footer`
 
     a {
       color: ${props => props.theme.colors.primary};
-      text-shadow: 0 1px 1px #fff;
+      text-shadow: 0 -1px 1px #ffffff, 1px 1px 1px #00000031;
       cursor: pointer;
+      transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
+
+      &:hover,
+      &:focus {
+        color: ${props => props.theme.colors.background};
+        text-shadow: 0 -1px 1px #ffffff, 1px 1px 1px #00000031;
+      }
     }
   }
 `;
