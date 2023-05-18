@@ -48,6 +48,8 @@ const Home = () => {
           square
           sx={{
             height: '100vh',
+            background: '#ffffffb0',
+            backdropFilter: 'blur(7.5px)',
           }}
         >
           <Box
