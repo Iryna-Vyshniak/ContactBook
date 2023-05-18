@@ -13,10 +13,10 @@ import { Title } from 'components/Title/Title';
 const defaultTheme = createTheme({
   palette: {
     primary: {
-      main: '#608B38',
+      main: '#defabb',
     },
     secondary: {
-      main: '#dee2ff',
+      main: '#d4bff9',
     },
   },
 });
@@ -28,7 +28,7 @@ const Contacts = () => {
         container
         component="main"
         sx={{
-          backgroundImage: `url("https://ik.imagekit.io/irinavn2011/thomas-kolnowski-uY-9Dyz8PPM-unsplash.jpg?updatedAt=1684182727609")`,
+          backgroundImage: `url("https://ik.imagekit.io/irinavn2011/phone.jpg?updatedAt=1684367039883")`,
           backgroundRepeat: 'no-repeat',
           backgroundColor: t =>
             t.palette.mode === 'light'
@@ -40,7 +40,7 @@ const Contacts = () => {
         }}
       >
         <CssBaseline />
-        <Grid item xs={false} sm={6} md={7} />
+
         <Grid
           item
           xs={12}
@@ -51,7 +51,8 @@ const Contacts = () => {
           square
           sx={{
             height: '100%',
-            background: '#FFF4F0',
+            background: '#dfcece99',
+            backdropFilter: 'blur(7.5px)',
           }}
         >
           <Box
@@ -73,6 +74,7 @@ const Contacts = () => {
             </Grid>
           </Box>
         </Grid>
+        <Grid item xs={false} sm={6} md={7} />
       </Grid>
     </ThemeProvider>
   );
