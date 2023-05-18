@@ -69,11 +69,11 @@ export default function Login() {
         }}
       >
         <CssBaseline />
-        <Grid item xs={false} sm={4} md={7} />
+        <Grid item xs={false} sm={6} md={7} />
         <Grid
           item
           xs={12}
-          sm={8}
+          sm={6}
           md={5}
           component={Paper}
           elevation={24}
@@ -130,15 +130,16 @@ export default function Login() {
                   control={<Checkbox value="remember" color="primary" />}
                   label="Remember me"
                 />
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  sx={{ mt: 3, mb: 2 }}
+                >
+                  Sign In
+                </Button>
               </Grid>
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2 }}
-              >
-                Sign In
-              </Button>
+
               <Grid container>
                 <Grid item xs>
                   <Link href="#" variant="body2">
