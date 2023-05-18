@@ -3,23 +3,23 @@ import Modal from 'react-modal';
 import { MdOutlineClose } from 'react-icons/md';
 import Av from 'assets/avatar.png';
 import {
+  BorderInside,
+  BorderOutside,
   Button,
   CloseBtn,
   ModalPicture,
   ModalPictureWrapper,
+  PhotoThumb,
+  PhotoWrap,
   PictureDescr,
 } from './Modal.styled';
 import { customStyles } from 'styles/modalStyles';
 import { useState } from 'react';
 
 import { Tooltip } from '@chakra-ui/react';
-// mui
-//import Avatar from '@mui/material/Avatar';
 
 import { TfiPencil } from 'react-icons/tfi';
 import { ChangeContactModal } from 'components/ChangeContactModal/ChangeContactModal';
-// import { getRandomHexColor } from 'utils/getRandomHexColor';
-// import { abbrevName } from 'utils/abbrevName';
 
 Modal.setAppElement('#root');
 
@@ -35,16 +35,6 @@ export const ContactModal = ({ isOpen, data, onClose }) => {
     onClose();
   };
 
-  // function stringAvatar(name) {
-  //   //console.log(name);
-  //   return {
-  //     sx: {
-  //       bgcolor: getRandomHexColor(),
-  //     },
-  //     children: abbrevName(name),
-  //   };
-  // }
-
   return (
     <Modal
       isOpen={isOpen}
@@ -55,12 +45,15 @@ export const ContactModal = ({ isOpen, data, onClose }) => {
       <CloseBtn onClick={onClose}>
         <MdOutlineClose />
       </CloseBtn>
-      <ModalPictureWrapper>
-        {/* {data?.name && (
-          <Avatar {...stringAvatar(Object.values(data?.name).join(''))} />
-        )} */}
-        <ModalPicture src={Av} alt="photo" width="260" />
-      </ModalPictureWrapper>
+      <PhotoWrap>
+        <BorderOutside>
+          <BorderInside>
+            <PhotoThumb>
+              <ModalPicture src={Av} alt="photo" width="260" />
+            </PhotoThumb>
+          </BorderInside>
+        </BorderOutside>
+      </PhotoWrap>
       <PictureDescr>
         <p>{data?.name}</p>
         <Tooltip label="Call" hasArrow bg="gray.300" color="#000" fontSize="xs">
