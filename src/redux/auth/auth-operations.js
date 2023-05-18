@@ -17,7 +17,7 @@ export const registerUser = createAsyncThunk(
         position: 'bottom-right',
         autoClose: 1500,
       });
-      console.log('register:', result);
+      //console.log('register:', result);
       return result;
     } catch ({ response }) {
       return rejectWithValue(`Ooops! Wrong... Try again or update browser`);
@@ -34,7 +34,7 @@ export const logInUser = createAsyncThunk(
         position: 'bottom-right',
         autoClose: 1500,
       });
-      console.log('login:', result);
+      //console.log('login:', result);
       return result;
     } catch (error) {
       return rejectWithValue(`Ooops! Wrong... Try again or update browser`);
@@ -51,7 +51,7 @@ export const logOutUser = createAsyncThunk(
         position: 'bottom-right',
         autoClose: 1500,
       });
-      console.log('logout:', data);
+      //console.log('logout:', data);
       return data;
     } catch (error) {
       return rejectWithValue(`Ooops! Wrong... Try again or update browser`);
@@ -66,10 +66,8 @@ export const getCurrentUser = createAsyncThunk(
       const {
         auth: { token },
       } = getState();
-
       const { data } = await userCurrent(token);
-
-      console.log('currentUser:', data);
+      //console.log('currentUser:', data);
       return data;
     } catch ({ response }) {
       return rejectWithValue(`Ooops! Wrong... Try again or update browser`);
