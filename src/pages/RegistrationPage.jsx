@@ -21,9 +21,6 @@ const defaultTheme = createTheme({
     primary: {
       main: '#608B38',
     },
-    secondary: {
-      main: '#dee2ff',
-    },
   },
 });
 
@@ -93,6 +90,8 @@ export default function Register() {
           square
           sx={{
             height: '100vh',
+            background: '#ffffffb0',
+            backdropFilter: 'blur(7.5px)',
           }}
         >
           <Box
@@ -104,10 +103,20 @@ export default function Register() {
               alignItems: 'center',
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: 'primary.main' }}>
+            <Avatar
+              sx={{ m: 1, bgcolor: 'primary.main', boxShadow: 3 }}
+              // sx={{ boxShadow: 3 }}
+            >
               <LockOutlinedIcon />
             </Avatar>
-            <Typography component="h1" variant="h5">
+            <Typography
+              component="h1"
+              variant="h5"
+              sx={{
+                color: '#fff',
+                textShadow: '-1px -1px 1px #ffffff31, 1px 1px 1px #00000031',
+              }}
+            >
               SignUp
             </Typography>
             <Box
@@ -127,6 +136,7 @@ export default function Register() {
                     name="name"
                     autoFocus
                     error={empty.name}
+                    sx={{ boxShadow: 3 }}
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -138,6 +148,7 @@ export default function Register() {
                     name="email"
                     autoComplete="email"
                     error={empty.email}
+                    sx={{ boxShadow: 3 }}
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -150,6 +161,7 @@ export default function Register() {
                     id="password"
                     autoComplete="new-password"
                     error={empty.password}
+                    sx={{ boxShadow: 3 }}
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -163,7 +175,7 @@ export default function Register() {
                     type="submit"
                     fullWidth
                     variant="contained"
-                    sx={{ mt: 3, mb: 2 }}
+                    sx={{ mt: 3, mb: 2, boxShadow: 3 }}
                   >
                     Sign Up
                   </Button>
