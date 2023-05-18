@@ -11,6 +11,6 @@ export const SectionWrapper = styled.section`
   max-width: 100%;
   width: 43.75rem;
 
-  background: transparent;
-  text-shadow: 1px 1px 0 #fff;
+  color: ${props => props.theme.colors.black};
+  text-shadow: 0 -0.4px 0.4px #ffffff, 0.4px 0.4px 0.4px #00000031;
 `;
