@@ -19,8 +19,6 @@ export const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
-
-    background-color: #dee2ff;
     letter-spacing: 0.02em;
     font-size: 0.85rem;
     letter-spacing: 0.07em;
@@ -79,7 +77,7 @@ export const GlobalStyle = createGlobalStyle`
     object-position: center;
 }
 
-  a {
+  p, a {
     text-decoration: none;
     color: ${props => props.theme.colors.black};
     text-shadow: ${props => props.theme.shadows.textShadow};
@@ -92,6 +90,6 @@ export const GlobalStyle = createGlobalStyle`
     align-items: center;
     flex: 1 1 auto;
     width: 100%;
-
 }
+
 `;
