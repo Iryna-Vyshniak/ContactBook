@@ -15,3 +15,7 @@ the ability to add, delete, and filter contacts.
 
 The application's robust features and user-friendly interface that helps users
 manage their phone contacts effectively
+
+<div align="center">
+  <img src="https://ik.imagekit.io/irinavn2011/Untitled_design.png?updatedAt=1684443648524" width="1200" height="auto"/>
+</div>
