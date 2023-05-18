@@ -1,20 +1,18 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useAuth } from 'hooks/useAuth';
+import Logo from 'assets/logo-book.png';
+import { Nav, NavLink } from './Navigation.styled';
 
 export const Navigation = () => {
   const { isLoggedIn } = useAuth();
 
   return (
-    <nav>
-      <Link to="/">Logo</Link>
+    <Nav>
+      <Link to="/">
+        <img src={Logo} alt="logo" width={48} />
+      </Link>
       <NavLink to="/">Home</NavLink>
       {isLoggedIn && <NavLink to="/contacts">Contacts</NavLink>}
-      {!isLoggedIn && (
-        <>
-          <NavLink to="/register">SignUp</NavLink>
-          <NavLink to="/login">SignIn</NavLink>
-        </>
-      )}
-    </nav>
+    </Nav>
   );
 };
