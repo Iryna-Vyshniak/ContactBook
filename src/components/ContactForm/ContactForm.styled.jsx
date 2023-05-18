@@ -49,7 +49,7 @@ export const FieldFormik = styled(Field)`
   outline: 0;
   border-radius: none;
   color: ${props => props.theme.colors.black};
-  background-color: #f2f4f5;
+  background-color: #fefffd;
   text-shadow: ${props => props.theme.shadows.textShadow};
   box-shadow: inset -1px -1px 1px #ffffff, inset 1px 1px 1px #8e9aaf;
 
