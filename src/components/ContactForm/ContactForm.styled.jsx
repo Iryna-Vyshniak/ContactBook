@@ -5,12 +5,13 @@ export const Form = styled(FormikForm)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
   margin-bottom: ${props => props.theme.space[4]}px;
   padding: ${props => props.theme.space[5]}px;
 
   max-width: 100%;
   width: 700px;
+  height: auto;
 `;
 
 export const FormField = styled.label`
@@ -48,8 +49,8 @@ export const FieldFormik = styled(Field)`
   border: 0;
   outline: 0;
   border-radius: none;
+  background-color: transparent;
   color: ${props => props.theme.colors.black};
-  background-color: #fefffd;
   text-shadow: ${props => props.theme.shadows.textShadow};
   box-shadow: inset -1px -1px 1px #ffffff, inset 1px 1px 1px #8e9aaf;
 
@@ -84,14 +85,13 @@ export const StyledButton = styled.button`
 
   max-width: 100%;
 
-  border: ${props => props.theme.borders.none};
+  border: 1px solid #dfcece;
   outline: none;
 
   box-shadow: ${props => props.theme.shadows.boxShadow};
   transition: all 0.2s ease-in-out;
 
-  background-color: ${props => props.theme.colors.background};
-
+  background-color: transparent;
   color: ${props => props.theme.colors.black};
   text-shadow: ${props => props.theme.shadows.textShadow};
 
