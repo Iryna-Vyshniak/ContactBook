@@ -31,10 +31,13 @@ export const UserMenu = () => {
         label="LogOut"
         variant="outlined"
         onClick={handleLogOut}
+        sx={{
+          border: '1px solid #dfcece',
+          color: '#000000',
+          textShadow: '-1px -1px 1px #ffffff31, 1px 1px 1px #00000031',
+          boxShadow: 3,
+        }}
       />
-      {/* <button type="button" onClick={handleLogOut}>
-        LogOut
-      </button> */}
     </Wrapper>
   );
 };
