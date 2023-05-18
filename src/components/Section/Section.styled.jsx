@@ -11,7 +11,7 @@ export const SectionWrapper = styled.section`
   max-width: 100%;
   width: 43.75rem;
 
-  //background: #e6eaff;
+  background: #e6eaff;
   text-shadow: 1px 1px 0 #fff;
   box-shadow: -1px -1px 1px #fff, 1px 1px 1px #babecc;
 `;
