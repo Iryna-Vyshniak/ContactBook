@@ -17,8 +17,21 @@ export const NavLink = styled(Link)`
 
   font-weight: 500;
 
+  &:hover,
+  &:focus {
+    box-shadow: inset -1px -1px 3px #fff, inset 1px 1px 3px rgba(0, 0, 0, 0.1);
+  }
+
   &.active {
-    color: white;
-    background: linear-gradient(141.22deg, #c1c54f 9.4%, #608b38 91.91%);
+    outline: none;
+
+    box-shadow: inset -1px -1px 3px #fff, inset 1px 1px 3px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease-in-out;
+
+    background-color: transparent;
+    color: ${props => props.theme.colors.primary};
+    text-shadow: ${props => props.theme.shadows.textShadow};
+
+    cursor: pointer;
   }
 `;
