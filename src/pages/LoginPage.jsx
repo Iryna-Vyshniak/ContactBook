@@ -18,7 +18,13 @@ import { logInUser } from 'redux/auth/auth-operations';
 
 // TODO remove, this demo shouldn't need to reset the theme.
 
-const defaultTheme = createTheme();
+const defaultTheme = createTheme({
+  palette: {
+    primary: {
+      main: '#FFFFFF',
+    },
+  },
+});
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -36,8 +42,6 @@ export default function Login() {
       email: data.get('email'),
       password: data.get('password'),
     };
-
-    //console.log('form login user: ', user);
 
     if (user.email === '') {
       setEmpty(prev => ({ ...prev, email: true }));
@@ -80,6 +84,8 @@ export default function Login() {
           square
           sx={{
             height: '100vh',
+            background: '#ffffffb0',
+            backdropFilter: 'blur(7.5px)',
           }}
         >
           <Box
@@ -91,10 +97,24 @@ export default function Login() {
               alignItems: 'center',
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+            <Avatar
+              sx={{
+                m: 1,
+                bgcolor: 'primary.main',
+                boxShadow: 3,
+                color: '#00000031',
+              }}
+            >
               <LockOutlinedIcon />
             </Avatar>
-            <Typography component="h1" variant="h5">
+            <Typography
+              component="h1"
+              variant="h5"
+              sx={{
+                color: '#fff',
+                textShadow: '-1px -1px 1px #ffffff31, 1px 1px 1px #00000031',
+              }}
+            >
               SignIn
             </Typography>
             <Box
@@ -114,6 +134,7 @@ export default function Login() {
                   autoComplete="email"
                   autoFocus
                   error={empty.email}
+                  sx={{ boxShadow: 3 }}
                 />
                 <TextField
                   margin="normal"
@@ -125,6 +146,7 @@ export default function Login() {
                   id="password"
                   autoComplete="current-password"
                   error={empty.password}
+                  sx={{ boxShadow: 3 }}
                 />
                 <FormControlLabel
                   control={<Checkbox value="remember" color="primary" />}
@@ -134,7 +156,7 @@ export default function Login() {
                   type="submit"
                   fullWidth
                   variant="contained"
-                  sx={{ mt: 3, mb: 2 }}
+                  sx={{ mt: 3, mb: 2, boxShadow: 3 }}
                 >
                   Sign In
                 </Button>
