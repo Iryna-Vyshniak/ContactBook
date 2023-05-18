@@ -17,7 +17,7 @@ export const Item = styled.li`
   text-shadow: ${props => props.theme.shadows.textShadow};
   font-size: ${props => props.theme.fontSizes.s};
 
-  @media screen and (min-width: 480px) {
+  @media screen and (min-width: 768px) {
     gap: 16px;
   }
 
@@ -45,11 +45,13 @@ export const Btn = styled.button`
   padding-left: ${p => p.theme.space[3]}px;
   padding-right: ${p => p.theme.space[3]}px;
 
+  width: 30px;
+  height: 30px;
   border: none;
   outline: none;
-
+  border-radius: 50%;
   color: ${props => props.theme.colors.black};
-  background-color: ${p => p.theme.colors.background};
+  background-color: transparent;
   box-shadow: ${p => p.theme.shadows.boxShadow};
   transition: all 0.2s ease-in-out;
 
@@ -58,13 +60,13 @@ export const Btn = styled.button`
     box-shadow: inset -1px -1px 1px #ffffff, inset 1px 1px 1px #8e9aaf;
 
     svg {
-      fill: ${p => p.theme.colors.primary};
+      fill: ${p => p.theme.colors.white};
       stroke: ${p => p.theme.colors.black};
     }
   }
 
   &:active {
-    background-color: ${p => p.theme.colors.accent};
+    background-color: ${p => p.theme.colors.white};
     svg {
       fill: ${p => p.theme.colors.black};
       stroke: ${p => p.theme.colors.white};
@@ -105,7 +107,8 @@ export const ModalPictureWrapper = styled.div`
   width: 60px;
 
   border-radius: 50%;
-  box-shadow: -3px -3px 7px #ffffff, 3px 3px 5px #ceced1;
+  box-shadow: rgba(255, 255, 255, 0.1) -1px -1px 1px,
+    rgba(0, 0, 0, 0.5) 1px 1px 1px;
   cursor: pointer;
   overflow: hidden;
 
@@ -148,7 +151,7 @@ export const ContactDescr = styled.div`
   width: 80%;
   height: auto;
 
-  @media screen and (min-width: 480px) {
+  @media screen and (min-width: 1080px) {
     flex-direction: row;
     gap: 16px;
   }
