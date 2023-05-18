@@ -28,7 +28,7 @@ export const ContactList = () => {
   const error = useSelector(selectError);
   const filter = useSelector(selectFilter);
 
-  console.log(contacts);
+  //console.log(contacts);
 
   const dispatch = useDispatch();
 
