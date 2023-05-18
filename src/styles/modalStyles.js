@@ -1,6 +1,6 @@
 export const customStyles = {
   overlay: {
-    backgroundColor: 'rgba(142,154,175, 0.3)',
+    backgroundColor: 'rgba(142,154,175, 0.9)',
     zIndex: 1300,
   },
   content: {
@@ -14,15 +14,18 @@ export const customStyles = {
     transform: 'translate(-50%, -50%)',
     maxWidth: '100%',
     width: '420px',
-    height: 'auto',
+    height: '460px',
     boxShadow: '2px 2px 2px #0f0f0f',
     border: 'none',
     borderRadius: 'none',
+    backgroundColor: '#ebecf0',
+    color: '#545454',
+    textShadow: '1px 4px 6px #b1b4bf, 1px -2px 2px #fff',
   },
 };
 export const customStylesInsideModal = {
   overlay: {
-    backgroundColor: 'rgba(142,154,175, 0.3)',
+    backgroundColor: 'rgba(142,154,175, 0.9)',
     zIndex: 1301,
   },
   content: {
@@ -34,11 +37,19 @@ export const customStylesInsideModal = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '8px',
     maxWidth: '100%',
     width: '420px',
-    height: 'auto',
+    height: '460px',
     boxShadow: '2px 2px 2px #0f0f0f',
     border: 'none',
     borderRadius: 'none',
+    backgroundColor: '#ebecf0',
+    color: '#545454',
+    textShadow: '1px 4px 6px #b1b4bf, 1px -2px 2px #fff',
   },
 };
