@@ -38,7 +38,7 @@ export const theme = {
     round: '50%',
   },
   shadows: {
-    textShadow: '0 0.4px 0.4px #fff',
-    boxShadow: '#B7BFB0 8px 8px 5px 0px',
+    textShadow: '0 -0.4px 0.4px #ffffff, 0.4px 0.4px 0.4px #00000031',
+    boxShadow: '-1px -1px 1px #ffffff31, 1px 1px 1px #00000031',
   },
 };
