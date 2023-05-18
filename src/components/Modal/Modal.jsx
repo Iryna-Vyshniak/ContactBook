@@ -8,7 +8,6 @@ import {
   Button,
   CloseBtn,
   ModalPicture,
-  ModalPictureWrapper,
   PhotoThumb,
   PhotoWrap,
   PictureDescr,

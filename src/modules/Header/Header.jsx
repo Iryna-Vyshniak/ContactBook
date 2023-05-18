@@ -1,20 +1,10 @@
 import React, { useState } from 'react';
-import { AppBar, HeaderBlock, Nav, NavBlock, UserBlock } from './Header.styled';
+import { AppBar, Nav, NavBlock, UserBlock } from './Header.styled';
 import NavbarAuth from '../NavbarAuth/NavbarAuth';
 import { useAuth } from 'hooks/useAuth';
 import { UserMenu } from 'modules/UserMenu/UserMenu';
 import { Navigation } from 'modules/Navigation/Navigation';
 import Logo from 'assets/logo-book.png';
-
-// import {
-//   AppBar,
-//   LangThemeBlock,
-//   Link,
-//   Logo,
-//   LogoText,
-//   Nav,
-//   NavBlock,
-// } from './Header.styled';
 
 import {
   Box,
