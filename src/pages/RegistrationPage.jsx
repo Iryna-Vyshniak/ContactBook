@@ -19,10 +19,10 @@ import { registerUser } from 'redux/auth/auth-operations';
 const defaultTheme = createTheme({
   palette: {
     primary: {
-      main: '#608B38', // very red
+      main: '#608B38',
     },
     secondary: {
-      main: '#00fff0', // very cyan
+      main: '#dee2ff',
     },
   },
 });
@@ -82,11 +82,11 @@ export default function Register() {
         }}
       >
         <CssBaseline />
-        <Grid item xs={false} sm={4} md={7} />
+        <Grid item xs={false} sm={6} md={7} />
         <Grid
           item
           xs={12}
-          sm={8}
+          sm={6}
           md={5}
           component={Paper}
           elevation={24}
@@ -159,16 +159,17 @@ export default function Register() {
                     }
                     label="I want to receive inspiration, marketing promotions and updates via email."
                   />
+                  <Button
+                    type="submit"
+                    fullWidth
+                    variant="contained"
+                    sx={{ mt: 3, mb: 2 }}
+                  >
+                    Sign Up
+                  </Button>
                 </Grid>
               </Grid>
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2 }}
-              >
-                Sign Up
-              </Button>
+
               <Grid container justifyContent="flex-end">
                 <Grid item>
                   {onSignUp && (
