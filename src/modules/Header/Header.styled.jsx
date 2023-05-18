@@ -19,11 +19,12 @@ export const HeaderBlock = styled.header`
   padding-bottom: ${props => props.theme.space[3]}px;
 
   color: ${props => props.theme.colors.black};
-  background-color: ${props => props.theme.colors.secondary};
+  //background-color: ${props => props.theme.colors.background};
   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
     0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 
   backdrop-filter: blur(7.5px);
+  opacity: 0.9;
   > nav {
     display: flex;
 
