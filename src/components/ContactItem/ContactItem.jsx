@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 // @chakra-ui/react'
 import { Tooltip } from '@chakra-ui/react';
 // mui
@@ -100,4 +101,10 @@ export const ContactItem = ({ name, phone, id }) => {
       />
     </>
   );
+};
+
+ContactItem.propTypes = {
+  name: PropTypes.string.isRequired,
+  phone: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
 };
