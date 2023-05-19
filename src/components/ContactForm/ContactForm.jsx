@@ -30,7 +30,7 @@ export const ContactForm = () => {
     <Formik
       initialValues={initialValues}
       onSubmit={(values, { resetForm }) => {
-        console.log(values);
+        // console.log(values);
         onAddContact({ ...values });
         resetForm();
       }}
