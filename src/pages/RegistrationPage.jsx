@@ -146,7 +146,7 @@ export default function Register() {
                     error={empty.email}
                     sx={{ boxShadow: 3 }}
                     helperText={
-                      'Email should look like a valid email address as example: qwerty1@example.com'
+                      'Example of valid email address: qwerty1@example.com'
                     }
                   />
                 </Grid>
@@ -160,10 +160,10 @@ export default function Register() {
                     id="password"
                     autoComplete="new-password"
                     sx={{ boxShadow: 3 }}
-                    // inputProps={inputProps}
+                    //inputProps={{ minLength: 7 }}
                     error={passwordValid.length < 7}
                     onChange={e => setPasswordValid(e.target.value)}
-                    helperText={'Password should contain at least 7 symbols'}
+                    helperText={'Password should contains at least 7 symbols'}
                   />
                 </Grid>
                 <Grid item xs={12}>
