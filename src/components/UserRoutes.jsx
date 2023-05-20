@@ -9,6 +9,7 @@ const HomePage = lazy(() => import('pages/HomePage'));
 const ContactsPage = lazy(() => import('pages/ContactsPage'));
 const LoginPage = lazy(() => import('pages/LoginPage'));
 const RegistrationPage = lazy(() => import('pages/RegistrationPage'));
+const PageNotFound = lazy(() => import('pages/PageNotFound/PageNotFound'));
 
 const UserRoutes = () => {
   return (
@@ -40,6 +41,7 @@ const UserRoutes = () => {
               <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
             }
           />
+          <Route path="*" element={<PageNotFound />} />
         </Route>
       </Routes>
     </Suspense>
