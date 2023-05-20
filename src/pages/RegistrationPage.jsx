@@ -28,8 +28,8 @@ export default function Register() {
   const dispatch = useDispatch();
   const location = useLocation();
   const onSignUp = location.pathname === '/register';
-  const [empty, setEmpty] = useState({ email: false, password: false });
-  const [password, setPassword] = useState(false);
+  const [empty, setEmpty] = useState({ name: false, email: false });
+  const [passwordValid, setPasswordValid] = useState({ password: false });
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -52,8 +52,8 @@ export default function Register() {
       return;
     }
 
-    if (password.length < 7 && password === '') {
-      setPassword(prev => ({ ...prev, password: true }));
+    if (user.password.length < 7 && user.password === '') {
+      setPasswordValid(prev => ({ ...prev, password: true }));
       return;
     }
 
@@ -145,6 +145,9 @@ export default function Register() {
                     autoComplete="email"
                     error={empty.email}
                     sx={{ boxShadow: 3 }}
+                    helperText={
+                      'Email should look like a valid email address as example: qwerty1@example.com'
+                    }
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -158,8 +161,8 @@ export default function Register() {
                     autoComplete="new-password"
                     sx={{ boxShadow: 3 }}
                     // inputProps={inputProps}
-                    error={password.length < 7}
-                    onChange={e => setPassword(e.target.value)}
+                    error={passwordValid.length < 7}
+                    onChange={e => setPasswordValid(e.target.value)}
                     helperText={'Password should contain at least 7 symbols'}
                   />
                 </Grid>
