@@ -1,4 +1,3 @@
-import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -15,6 +14,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Link, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { registerUser } from 'redux/auth/auth-operations';
+import { useState } from 'react';
 
 const defaultTheme = createTheme({
   palette: {
@@ -28,14 +28,12 @@ export default function Register() {
   const dispatch = useDispatch();
   const location = useLocation();
   const onSignUp = location.pathname === '/register';
-  const [empty, setEmpty] = React.useState({ email: false, password: false });
+  const [empty, setEmpty] = useState({ email: false, password: false });
+  const [password, setPassword] = useState(false);
 
-  // const theme = useTheme();
-  // const { primary, secondary } = theme.palette;
-
-  const handleSubmit = event => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
+  const handleSubmit = e => {
+    e.preventDefault();
+    const data = new FormData(e.currentTarget);
 
     const user = {
       name: data.get('name'),
@@ -53,8 +51,9 @@ export default function Register() {
       setEmpty(prev => ({ ...prev, email: true }));
       return;
     }
-    if (user.password === '') {
-      setEmpty(prev => ({ ...prev, password: true }));
+
+    if (password.length < 7 && password === '') {
+      setPassword(prev => ({ ...prev, password: true }));
       return;
     }
 
@@ -103,10 +102,7 @@ export default function Register() {
               alignItems: 'center',
             }}
           >
-            <Avatar
-              sx={{ m: 1, bgcolor: 'primary.main', boxShadow: 3 }}
-              // sx={{ boxShadow: 3 }}
-            >
+            <Avatar sx={{ m: 1, bgcolor: 'primary.main', boxShadow: 3 }}>
               <LockOutlinedIcon />
             </Avatar>
             <Typography
@@ -160,8 +156,11 @@ export default function Register() {
                     type="password"
                     id="password"
                     autoComplete="new-password"
-                    error={empty.password}
                     sx={{ boxShadow: 3 }}
+                    // inputProps={inputProps}
+                    error={password.length < 7}
+                    onChange={e => setPassword(e.target.value)}
+                    helperText={'Password should contain at least 7 symbols'}
                   />
                 </Grid>
                 <Grid item xs={12}>
