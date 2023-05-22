@@ -1,13 +1,4 @@
-import styled, { keyframes } from 'styled-components';
-
-const typingAnimation = keyframes`
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
-`;
+import styled from 'styled-components';
 
 export const Text = styled.div`
   position: relative;
@@ -15,5 +6,4 @@ export const Text = styled.div`
   white-space: wrap;
   overflow: hidden;
   border-right: 0.15em solid transparent;
-  animation: ${typingAnimation} 300ms steps(40);
 `;
