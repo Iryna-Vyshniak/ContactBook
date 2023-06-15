@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/ContactBook/static/css/main.1b32cb88.css",
-    "main.js": "/ContactBook/static/js/main.91e8fcfd.js",
+    "main.js": "/ContactBook/static/js/main.8e9d667e.js",
     "static/js/175.a5414713.chunk.js": "/ContactBook/static/js/175.a5414713.chunk.js",
     "static/js/23.2bd135fd.chunk.js": "/ContactBook/static/js/23.2bd135fd.chunk.js",
     "static/js/637.0108bd91.chunk.js": "/ContactBook/static/js/637.0108bd91.chunk.js",
@@ -14,7 +14,7 @@
     "static/media/avatar.png": "/ContactBook/static/media/avatar.2f9260c8b9b18c1b7ec0.png",
     "index.html": "/ContactBook/index.html",
     "main.1b32cb88.css.map": "/ContactBook/static/css/main.1b32cb88.css.map",
-    "main.91e8fcfd.js.map": "/ContactBook/static/js/main.91e8fcfd.js.map",
+    "main.8e9d667e.js.map": "/ContactBook/static/js/main.8e9d667e.js.map",
     "175.a5414713.chunk.js.map": "/ContactBook/static/js/175.a5414713.chunk.js.map",
     "23.2bd135fd.chunk.js.map": "/ContactBook/static/js/23.2bd135fd.chunk.js.map",
     "637.0108bd91.chunk.js.map": "/ContactBook/static/js/637.0108bd91.chunk.js.map",
@@ -26,6 +26,6 @@
   },
   "entrypoints": [
     "static/css/main.1b32cb88.css",
-    "static/js/main.91e8fcfd.js"
+    "static/js/main.8e9d667e.js"
   ]
 }
